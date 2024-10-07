@@ -10,7 +10,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { FaRegImages } from "react-icons/fa";
 import Image from "next/image";
-import { CldUploadWidget } from "next-cloudinary";
+import { CldUploadWidget, CloudinaryUploadWidgetResults } from "next-cloudinary";
 import { FcRemoveImage } from "react-icons/fc";
 import { toast } from "react-hot-toast";
 
@@ -51,6 +51,20 @@ const EditPostForm = ({ post }: { post: TPost }) => {
     post.catName,
     post.links,
   ]);
+
+  const handleImageUpload = (result: CloudinaryUploadWidgetResults) => {
+    console.log("result: ", result);
+    const info = result.info as object;
+
+    if ("secure_url" in info && "public_id" in info) {
+      const url = info.secure_url as string;
+      const public_id = info.public_id as string;
+      setImgUrl(url);
+      setPublicId(public_id);
+      console.log("url: ", url);
+      console.log("public_id: ", public_id);
+    }
+  };
 
   const addlink = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
@@ -170,10 +184,7 @@ const EditPostForm = ({ post }: { post: TPost }) => {
 
         <CldUploadWidget
           uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
-          onSuccess={(result) => {
-            setPublicId(result?.info?.public_id as string);
-            setImgUrl(result?.info?.url as string);
-          }}
+          onSuccess={(result) => {handleImageUpload}}
         >
           {({ open }) => {
             return (
