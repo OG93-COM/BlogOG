@@ -2,7 +2,7 @@ import prisma from "@/lib/prismadb";
 import { getServerSession } from "next-auth/next";
 import { NextResponse } from "next/server";
 import next from "next/types";
-import { authOptions } from "@/lib/authOptions"; 
+import { authOptions } from "../../../../lib/authOptions"; 
 
 export async function GET(req: Request, {params}:{params:{postId:string}}) {
     const id = params.postId

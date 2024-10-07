@@ -5,9 +5,9 @@ import { IoLink } from "react-icons/io5";
 import { FaRegEdit } from "react-icons/fa";
 import DeleteBtn from "./DeleteBtn";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/lib/authOptions";
+import { authOptions } from "../lib/authOptions";
 
-interface postProps {
+interface PostProps {
   id: string;
   title: string;
   content: string;
@@ -16,7 +16,7 @@ interface postProps {
   author: string;
   datepublished: string;
   links?: string[];
-  authoremail: string;
+  authoremail?: string;
 }
 
 const Post = async ({
@@ -29,7 +29,7 @@ const Post = async ({
   datepublished,
   links,
   authoremail,
-}: (postProps)) => {
+}: PostProps) => {
   const session = await getServerSession(authOptions);
   const isEditable = session && session?.user?.email === authoremail;
 
