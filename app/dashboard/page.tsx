@@ -2,7 +2,7 @@ import Post from "@/components/Post";
 import Link from "next/link";
 import React from "react";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 import { redirect } from "next/navigation";
 import axios from "axios";
 import { TPost } from "../types";

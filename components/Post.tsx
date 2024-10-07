@@ -6,7 +6,7 @@ import { IoLink } from "react-icons/io5";
 import { FaRegEdit } from "react-icons/fa";
 import DeleteBtn from "./DeleteBtn";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions"; 
 
 interface postProps {
   id: string;

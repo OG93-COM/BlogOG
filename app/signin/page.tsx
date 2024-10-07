@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { useSession } from "next-auth/react";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions"; 
 import { redirect } from "next/navigation";
 
 const page = async () => {

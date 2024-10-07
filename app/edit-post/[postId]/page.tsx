@@ -1,7 +1,7 @@
 import React from "react";
 import EditPostForm from "@/components/EditPostForm";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions"; 
 import { redirect } from "next/navigation";
 import axios from "axios";
 import { TPost } from "@/app/types";
