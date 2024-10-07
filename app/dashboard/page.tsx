@@ -43,7 +43,7 @@ const page = async () => {
               id={post.id}
               title={post.title}
               content={post.content}
-              author={session?.user?.name}
+              author={post.authorEmail}
               category={post.catName}
               datepublished={post.createdAt}
               links={post.links || []}
