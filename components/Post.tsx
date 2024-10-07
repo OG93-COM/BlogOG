@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import { postsData } from "../data";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { IoLink } from "react-icons/io5";
 import { FaRegEdit } from "react-icons/fa";
 import DeleteBtn from "./DeleteBtn";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/lib/authOptions"; 
+import { authOptions } from "@/lib/authOptions";
 
 interface postProps {
   id: string;
@@ -65,7 +64,7 @@ const Post = async ({
           )}
         </div>
         <div className="flex justify-between items-start text-xs px-2">
-          {category && <div className="category-post-btn">{category}</div>}
+          {category && <Link href={`/categories/${category}`} className="category-post-btn">{category}</Link>}
           {author ? (
                 <p>
                     Posted by <span className="font-bold">{author} </span>
