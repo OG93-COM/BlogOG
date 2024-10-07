@@ -6,7 +6,7 @@ import Link from "next/link";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { CldUploadWidget } from "next-cloudinary";
+import { CldUploadWidget, CloudinaryUploadWidgetResults } from "next-cloudinary";
 
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { AiOutlineDelete } from "react-icons/ai";
@@ -63,6 +63,20 @@ const AddPostForm = () => {
       console.log("Image Cant be Rremoved ", error)
     }
   }
+
+  const handleImageUpload = (result: CloudinaryUploadWidgetResults) => {
+    console.log("result: ", result);
+    const info = result.info as object;
+
+    if ("secure_url" in info && "public_id" in info) {
+      const url = info.secure_url as string;
+      const public_id = info.public_id as string;
+      setImgUrl(url);
+      setPublicId(public_id);
+      console.log("url: ", url);
+      console.log("public_id: ", public_id);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -153,10 +167,7 @@ const AddPostForm = () => {
 
         <CldUploadWidget
           uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
-          onSuccess={(result) => {
-            setPublicId(result?.info?.public_id as string);
-            setImgUrl(result?.info?.url as string);
-          }}
+          onSuccess={(result) => {handleImageUpload}}
         >
           {({ open }) => {
             return (
