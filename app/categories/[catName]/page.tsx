@@ -34,7 +34,7 @@ const page = async ({params}:{params:{catName:string}}) => {
           {decodeURIComponent(category)}
         </span>
         </div>
-        {posts && posts.length > 0 ? posts?.map((post:TPost) => (
+        {posts && posts.length > 0 ? posts.map((post:TPost) => (
               <Post
                 key={post.id}
                 id={post.id}
