@@ -4,7 +4,7 @@ import React from "react";
 import { TCategory } from "@/app/types";
 import axios from "axios";
 
-const getDataCat = async (): Promise<TCategory | null> => {
+const getDataCat = async (): Promise<TCategory[] | null> => {
   try {
     const res = await axios.get(`${process.env.NEXTAUTH_URL}/api/categories`);
     if (res.status === 200) {
@@ -21,7 +21,7 @@ const CategotyList = async () => {
 
   return (
     <div className="flex justify-start items-center gap-2 flex-wrap mb-4">
-      {category?.map((item: TCategory) => (
+      {category && category.map((item) => (
         <Link
           key={item.id}
           className="category-btn"
