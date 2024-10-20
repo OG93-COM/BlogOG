@@ -6,7 +6,7 @@ import { authOptions } from "../../../lib/authOptions"
 
 export async function POST(req: Request) {
 
-    
+
 
     const session = await getServerSession(authOptions)
     if(!session){

@@ -28,19 +28,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+      <NextAuthProvider>
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextAuthProvider>
           <NavBar />
           <main className=" lg:max-w-[1000px] mx-auto shadow-lg py-10 min-h-[500px]">
             {children}
           </main>
           <Footer />
           <Toaster position="top-center" reverseOrder={false}/>
-        </NextAuthProvider>
       </body>
     </html>
+        </NextAuthProvider>
   );
 }
