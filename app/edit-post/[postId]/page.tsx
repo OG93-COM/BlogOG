@@ -19,7 +19,7 @@ const getPost = async (id: string): Promise<TPost | null> => {
   return null;
 };
 
-const page = async ({ params }: { params: { postId: string } }) => {
+const EditPostPage = async ({ params }: { params: { postId: string } }) => {
   const id = params.postId;
   console.log(id);
 
@@ -38,4 +38,4 @@ const page = async ({ params }: { params: { postId: string } }) => {
   );
 };
 
-export default page;
+export default EditPostPage;
